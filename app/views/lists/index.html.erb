@@ -1,0 +1,13 @@
+<h1>Lists!</h1>
+<%= flash[:notice] %>
+<% form_for :list do |f|%>
+  <%= f.error_messages %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.submit "Go" %>
+<% end %>
+<ul>
+<% for list in @lists %>
+<li><%= list.title %> - <%= list.link_token%> - <%= list.edit_token%></li>
+<% end %>
+</ul>
