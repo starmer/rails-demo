@@ -1,0 +1,53 @@
+.product-col-1{
+	float:left;
+	padding:10px;
+}
+
+.product-col-2{
+	float:left;
+	padding:10px 0 0 10px;
+	width:400px;
+}
+
+.product-grid-item{
+	float:left;
+	padding:10px;
+	width:150px;
+}
+
+.product-grid-item .image-and-name{
+	height:240px;
+}
+
+.product-grid-item .price{
+	
+}
+
+.listing-table{
+	margin-top:1em;
+}
+
+.listing-table td{
+	padding:4px;
+}
+
+.cart{
+	width:100%;
+}
+
+.cart td{
+	padding:3px;
+}
+
+.cart a:hover{
+	background:none;
+}
+
+.odd{
+
+}
+
+.even{
+	background-color:#EEEEEE;
+}
+
