@@ -1,0 +1,52 @@
+@font-face {
+	font-family: 'ChunkFiveRegular';
+	src: url('../fonts/Chunkfive-webfont.eot');
+	src: local('☺'), url('../fonts/Chunkfive-webfont.woff') format('woff'), url('../fonts/Chunkfive-webfont.ttf') format('truetype'), url('../fonts/Chunkfive-webfont.svg#webfont') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+h1,h2,h3,h4,h5{
+	font-family:'ChunkFiveRegular', Arial, sans-serif;
+	letter-spacing: .5px;
+}
+
+.logo{
+	font-size:700%;
+	line-height:normal;
+	padding:10px;
+	height:75px;
+	margin:0;
+}
+
+#content {
+	margin: 10px 0 0 10px;
+}
+
+#footer{
+	position:absolute;
+	bottom:0;
+	right:0;
+}
+
+#main-nav{
+	margin:0;
+	padding:0 0 0 10px;
+}
+
+#main-nav li{
+	list-style:none;
+	display:inline;
+	font-family:'ChunkFiveRegular', Arial, sans-serif;
+	letter-spacing: .5px;
+	border-right:2px solid gray;
+	margin-right:5px;
+}
+
+#main-nav li.end{
+	border-right:none;
+}
+
+#main-nav a{
+	padding-top:5px;
+}

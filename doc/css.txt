@@ -1,0 +1,19 @@
+From YUI, to get a px sized font use the corresponding %, ie. to get 10px font use font-size:77%;
+px->%
+10 	77
+11 	85
+12 	93
+13 	100
+14 	108
+15 	116
+16 	123.1
+17 	131
+18 	138.5
+19 	146.5
+20 	153.9
+21 	161.6
+22 	167
+23 	174
+24 	182
+25 	189
+26 	197
