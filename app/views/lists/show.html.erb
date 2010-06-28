@@ -1,0 +1,21 @@
+<h3><%= @list.title %></h3>
+<% if @item.errors.any? %>  
+<div class="error">  
+  <h2>Please Try Again!</h2>  
+  <ul>  
+  <% @item.errors.full_messages.each do |msg| %>  
+    <li><%= msg %></li>  
+  <% end %>  
+  </ul>  
+</div>  
+<% end %>
+<% form_for @item do |f| -%>
+  <%= f.text_field :title %>
+  <%= f.hidden_field :list_id, :value => @list.id %>
+  <%= f.submit "Go", :disable_with => 'Going...' %>
+<% end -%>
+<ul>
+<% for item in @list.items %>
+  <li><%= h item.title %></li>
+<% end %>
+</ul>

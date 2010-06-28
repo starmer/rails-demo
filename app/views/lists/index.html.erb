@@ -1,11 +1,25 @@
 <% form_for :list do |f|%>
-  <%= f.error_messages %>
-  <%= f.label :title %>
+
+  <% if @list.errors.any? %>  
+  <div class="error">  
+    <h2>Please Try Again!</h2>  
+    <ul>  
+    <% @list.errors.full_messages.each do |msg| %>  
+      <li><%= msg %></li>  
+    <% end %>  
+    </ul>  
+  </div>  
+  <% end %>
+  
   <%= f.text_field :title %>
   <%= f.submit "Go" %>
 <% end %>
+
 <ul>
 <% for list in @lists %>
-  <li><%= list.title %> - <%= list.link_token%> - <%= list.edit_token%></li>
+  <li>
+    <% link_to(list) do %>
+      <%= list.title %> - <%= list.link_token%> - <%= list.edit_token%></li>
+    <% end %>
 <% end %>
 </ul>
