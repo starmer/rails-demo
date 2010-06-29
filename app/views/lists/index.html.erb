@@ -9,9 +9,7 @@
 <ul>
 <% for list in @lists %>
   <li>
-    <% link_to(list) do %>
-      <%= list.title %>
-    <% end %>
+    <%= link_to list.title, list_by_token_url(:token => list.link_token) %>
   </li>
 <% end %>
 </ul>

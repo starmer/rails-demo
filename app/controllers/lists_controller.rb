@@ -6,7 +6,14 @@ class ListsController < ApplicationController
     end
     
     def show
-      @list = List.find(params[:id])
+      puts "token: " + params[:token]
+      
+      if(params[:token])
+        @list = List.find_by_link_token(params[:token])
+      else
+        @list = List.find(params[:id])  
+      end
+      
       @item = Item.new
 
       respond_to do |format|
