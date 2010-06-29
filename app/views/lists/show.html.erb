@@ -4,7 +4,7 @@
 <% form_for @item, :html => {:id => 'item-form'} do |f| -%>
   <%= f.text_field :title %>
   <%= f.hidden_field :list_id, :value => @list.id %>
-  <%= f.submit "Go" %>
+  <%= f.submit "Add" %>
 <% end -%>
 
 <ul id="list-items">

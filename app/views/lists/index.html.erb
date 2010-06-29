@@ -1,11 +1,11 @@
+<h3>Create a new list</h3>
 <% form_for :list do |f|%>
-
   <%= render :partial => "shared/errors", :object => @list.errors %>
-  
   <%= f.text_field :title %>
   <%= f.submit "Go" %>
 <% end %>
 
+<h3>Lists</h3>
 <ul>
 <% for list in @lists %>
   <li>
