@@ -1,4 +1,17 @@
 class ItemsController < ApplicationController
+  
+  def delete
+    @item = Item.find(params[:id])
+    @list = List.find(@item.list_id)
+    @item.destroy
+    flash[:notice] = 'List item  was successfully deleted'
+
+    respond_to do |format|
+      format.html { redirect_to(@list) }
+      format.xml  { head :ok }
+      format.js
+    end
+  end
 
   def create
     @list = List.find(params[:item][:list_id])

@@ -1,6 +1,6 @@
 <% if @item.errors.any? %>  
 
-	$("#item-form").before('<div class="error flash"><h2>Please Try Again!</h2><ul><% @item.errors.full_messages.each do |msg| %><li><%= escape_javascript(msg) %></li><% end %></ul></div>');
+	$("#item-form").before('<%= escape_javascript(render(:partial => "shared/errors", :locals => {:errors => @item.errors})) %>');
 	<% flash.delete(:notice) %>
 	
 <% else %>
@@ -12,4 +12,4 @@
 	$("#<%=@item.id%>-view").editInPlace();
 	$(".edit_item").submitWithAjax();
 
-<% end %>
+<% end %>2	

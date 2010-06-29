@@ -20,6 +20,7 @@ jQuery.fn.editInPlace = function() {
 	var edit = $("#" + item_id + "-edit");
 	var view = $("#" + item_id + "-view");
 	var cancel = $("#" + item_id + "-cancel");
+	var deleteLink = $("#" + item_id + "-delete");
 	
   	this.mouseover(function(){
 		$(this).addClass("edit");
@@ -37,6 +38,18 @@ jQuery.fn.editInPlace = function() {
 		view.hide();	
     	return false;
 	});
+	deleteLink.click(function(){
+		if(confirm("Are you sure you want to delete this Item?")){
+			$('.flash').remove();
+			$.ajax({
+				url: this.href,
+				success: function() {}
+			});
+		}
+
+        return false;
+	});
+	
 	
   return this;
 };

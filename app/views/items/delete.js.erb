@@ -1,0 +1,3 @@
+$("#item-form").before('<div class="notice flash"><%= escape_javascript(flash.delete(:notice)) %></div>');
+$("#<%=@item.id%>-view").remove();
+$("#<%=@item.id%>-edit").remove();
