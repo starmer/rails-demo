@@ -21,6 +21,11 @@ pink: FF0088
 	padding:10px;
 }
 
+.logo a{
+	color:white;
+	background:none;
+}
+
 ul{
 	margin:0;
 	padding:0;
