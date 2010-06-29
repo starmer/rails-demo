@@ -6,7 +6,6 @@ class ListsController < ApplicationController
     end
     
     def show
-      puts "token: " + params[:token]
       
       if(params[:token])
         @list = List.find_by_link_token(params[:token])
@@ -31,8 +30,8 @@ class ListsController < ApplicationController
       
       respond_to do |format|
         if @list.save
-          flash[:notice] = 'List was successfully created.'
-          format.html { redirect_to :action => "index" }
+          flash[:notice] = 'List was successfully created'
+          format.html { redirect_to list_by_token_url(:token => @list.link_token) }
           format.xml  { render :xml => @list, :status => :created, :location => @list }
         else
           format.html { render :action => "index" }

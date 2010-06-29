@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
     flash[:notice] = 'List item  was successfully deleted'
 
     respond_to do |format|
-      format.html { redirect_to(@list) }
+      format.html { redirect_to list_by_token_url(:token => @list.link_token) }
       format.xml  { head :ok }
       format.js
     end
@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.save
         flash[:notice] = 'List item  was successfully added'
-        format.html { redirect_to @list }
+        format.html { redirect_to list_by_token_url(:token => @list.link_token) }
         format.xml  { render :xml => @list, :status => :created, :location => @list }
         format.js
       else
@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.update_attributes(params[:item])
         flash[:notice] = 'Item was successfully updated.'
-        format.html { redirect_to @list }
+        format.html { redirect_to list_by_token_url(:token => @list.link_token) }
         format.xml  { head :ok }
         format.js
       else
