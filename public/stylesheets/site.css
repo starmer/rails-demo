@@ -1,3 +1,36 @@
+/*
+blue: 00BBBB
+tan: FFFFCC
+yellow: FFCC33
+gray: 333333
+pink: FF0088
+*/
+
+#bar{
+	background-image:url(../images/bar.png);
+	height:10px;
+}
+
+.logo {
+	background-color:#333333;
+	color:white;
+	font-size:200%;
+	height:21px;
+	line-height:normal;
+	margin:0;
+	padding:10px;
+}
+
+ul{
+	margin:0;
+	padding:0;
+}
+
+li{
+	list-style:none;
+	padding:5px;
+}
+
 @font-face {
 	font-family: 'ChunkFiveRegular';
 	src: url('../fonts/Chunkfive-webfont.eot');
@@ -11,13 +44,15 @@ h1,h2,h3,h4,h5{
 	letter-spacing: .5px;
 }
 
-.logo{
-	font-size:700%;
-	line-height:normal;
-	padding:10px;
-	height:75px;
+.flash ul, .flash h3,h4{
 	margin:0;
+	padding:0;
 }
+
+.flash li{
+	list-style:none;
+}
+
 
 #content {
 	margin: 10px 0 0 10px;
@@ -49,4 +84,18 @@ h1,h2,h3,h4,h5{
 
 #main-nav a{
 	padding-top:5px;
+}
+
+#list-items{
+	margin:10px;
+	width:500px;
+}
+
+#list-items li{
+	border-bottom:1px dotted gray;
+	background-color:#F0F0F0;
+}
+
+#list-items .edit{
+	background-color:#FFCC33;
 }

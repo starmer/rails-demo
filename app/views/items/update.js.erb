@@ -1,0 +1,14 @@
+<% if @item.errors.any? %>  
+
+	$("#item-form").before('<div class="error flash"><h2>Please Try Again!</h2><ul><% @item.errors.full_messages.each do |msg| %><li><%= escape_javascript(msg) %></li><% end %></ul></div>');
+	<% flash.delete(:notice) %>
+	
+<% else %>
+
+	$("#item-form").before('<div class="notice flash"><%= escape_javascript(flash.delete(:notice)) %></div>');
+	$("#<%=@item.id%>-view").html("<%=@item.title%>");
+	$("#<%=@item.id%>-view").show();
+	$("#<%=@item.id%>-edit").hide();
+
+
+<% end %>

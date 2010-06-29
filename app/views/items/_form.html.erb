@@ -1,0 +1,3 @@
+<% form_for item do |f| %>
+  <%= f.text_field :title %> <%= f.submit "Save" %>  <%= f.submit "Cancel ", :id => item.id.to_s + "-cancel" %>
+<% end %>

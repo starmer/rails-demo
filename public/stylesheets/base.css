@@ -9,13 +9,13 @@ body{
 
 a {
 	text-decoration: none;
-	color:#FF00BB;
+	color:#FF0088;
 	padding:3px;
 }
 
 a:hover {
 	color:#FFFFFF;
-	background-color:#FF00BB;
+	background-color:#FF0088;
 }
 
 .error, .notice, .success {padding:.8em;margin-bottom:1em;border:2px solid #ddd;}

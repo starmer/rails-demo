@@ -2,59 +2,56 @@
 		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>Lists</title>
-<link rel="icon" href="/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-<%= stylesheet_link_tag 'base' %>
-<%= stylesheet_link_tag 'site' %>
+  <title><%= h(yield(:title) || "Lists!") %></title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <%= stylesheet_link_tag 'base' %>
+  <%= stylesheet_link_tag 'site' %>
 
-<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-<meta name="MSSmartTagsPreventParsing" content="TRUE" />
-<meta http-equiv="expires" content="-1" />
-<meta http-equiv= "pragma" content="no-cache" />
-<meta name="robots" content="all" />
-<meta name="description" content="LISTS!" />
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <meta name="MSSmartTagsPreventParsing" content="TRUE" />
+  <meta http-equiv="expires" content="-1" />
+  <meta http-equiv= "pragma" content="no-cache" />
+  <meta name="robots" content="all" />
+  <meta name="description" content="LISTS!" />
 
-  <!--%= javascript_include_tag "jquery" %-->
+  <%= javascript_include_tag "jquery", "application" %>
 
-<script type="text/javascript">
-	<%= @content_for_page_scripts %>
-</script>
+  	<%= yield(:head) %>
 
 </head>
 <body>
-  
+  <div id="bar"></div>
   <h1 class="logo">LISTS!</h1>
-<!--  
-	<ul id="main-nav">
-		<li>
-		  <a href="#">stuff</a>
-		</li>
-		<li>
-		  <a href="#">stuff</a>
-		</li>
-		<li>
-		  <a href="#">stuff</a>
-		</li>
-		<li class="end">
-		  <a href="#">stuff</a>
-		</li>
-	</ul>
-	-->
+    <!--  
+    <ul id="main-nav">
+    	<li>
+    	  <a href="#">stuff</a>
+    	</li>
+    	<li>
+    	  <a href="#">stuff</a>
+    	</li>
+    	<li>
+    	  <a href="#">stuff</a>
+    	</li>
+    	<li class="end">
+    	  <a href="#">stuff</a>
+    	</li>
+    </ul>
+    -->
 	
-  <div id="content">
+    <div id="content">
     	<%- if flash[:notice] -%>
-    	<p class="notice"><%= flash[:notice] %></p>
+    	<p class="notice flash"><%= flash[:notice] %></p>
     	<%- end -%>
     	<%- if flash[:error] -%>
-    	<p class="error"><%= flash[:error] %><%= flash[:alert] %></p>
+    	<p class="error flash"><%= flash[:error] %><%= flash[:alert] %></p>
     	<%- end -%>
 	
-  		<%= yield  %>		
+  		<%= yield  %>
+  		
   	</div>
-  	<div id="footer">
-       Copyright &copy; 2010 LISTS!. 
-    </div>
+
   </div>
 
 <%- if "production" == RAILS_ENV -%>

@@ -1,21 +1,19 @@
-<h3><%= @list.title %></h3>
-<% if @item.errors.any? %>  
-<div class="error">  
-  <h2>Please Try Again!</h2>  
-  <ul>  
-  <% @item.errors.full_messages.each do |msg| %>  
-    <li><%= msg %></li>  
-  <% end %>  
-  </ul>  
-</div>  
-<% end %>
-<% form_for @item do |f| -%>
+<h3 id="page-title"><%= @list.title %></h3>
+<%= render :partial => "shared/errors", :object => @item.errors %>
+
+<% form_for @item, :html => {:id => 'item-form'} do |f| -%>
   <%= f.text_field :title %>
   <%= f.hidden_field :list_id, :value => @list.id %>
-  <%= f.submit "Go", :disable_with => 'Going...' %>
+  <%= f.submit "Go" %>
 <% end -%>
-<ul>
+
+<ul id="list-items">
 <% for item in @list.items %>
-  <li><%= h item.title %></li>
+  <li class="item-view" id="<%=item.id%>-view">
+    <%= render :partial => "items/item", :locals => { :item => item } %>
+  </li>
+  <li class="item-edit" id="<%=item.id%>-edit" style="display:none;">
+    <%= render :partial => "items/form", :locals => { :item => item } %>
+  </li>
 <% end %>
 </ul>

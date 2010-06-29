@@ -5,8 +5,6 @@ class ListsController < ApplicationController
       @list = List.new
     end
     
-    # GET /blehs/1
-    # GET /blehs/1.xml
     def show
       @list = List.find(params[:id])
       @item = Item.new

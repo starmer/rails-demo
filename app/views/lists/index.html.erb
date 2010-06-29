@@ -1,15 +1,6 @@
 <% form_for :list do |f|%>
 
-  <% if @list.errors.any? %>  
-  <div class="error">  
-    <h2>Please Try Again!</h2>  
-    <ul>  
-    <% @list.errors.full_messages.each do |msg| %>  
-      <li><%= msg %></li>  
-    <% end %>  
-    </ul>  
-  </div>  
-  <% end %>
+  <%= render :partial => "shared/errors", :object => @list.errors %>
   
   <%= f.text_field :title %>
   <%= f.submit "Go" %>
@@ -19,7 +10,8 @@
 <% for list in @lists %>
   <li>
     <% link_to(list) do %>
-      <%= list.title %> - <%= list.link_token%> - <%= list.edit_token%></li>
+      <%= list.title %> - <%= list.link_token%> - <%= list.edit_token%>
     <% end %>
+  </li>
 <% end %>
 </ul>

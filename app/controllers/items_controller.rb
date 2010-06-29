@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  
+
   def create
     @list = List.find(params[:item][:list_id])
     @item = Item.new(params[:item])
@@ -9,9 +9,30 @@ class ItemsController < ApplicationController
         flash[:notice] = 'List item  was successfully added'
         format.html { redirect_to @list }
         format.xml  { render :xml => @list, :status => :created, :location => @list }
+        format.js
       else
+        flash[:notice] = 'Unable to create list item'
         format.html { render :template => "lists/show" }
         format.xml  { render :xml => @list.errors, :status => :unprocessable_entity }
+        format.js
+      end
+    end
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    @list = List.find(@item.list_id)
+
+    respond_to do |format|
+      if @item.update_attributes(params[:item])
+        flash[:notice] = 'Item was successfully updated.'
+        format.html { redirect_to @list }
+        format.xml  { head :ok }
+        format.js
+      else
+        format.html { render :template => "lists/show" }
+        format.xml  { render :xml => @item.errors, :status => :unprocessable_entity }
+        format.js
       end
     end
   end
