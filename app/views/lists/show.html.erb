@@ -6,7 +6,7 @@
 <%= render :partial => "shared/errors", :object => @item.errors %>
 
 <% form_for @item, :html => {:id => 'item-form'} do |f| -%>
-  <%= f.text_field :title %>
+  <%= f.text_field :title, :class => "focus" %>
   <%= f.hidden_field :list_id, :value => @list.id %>
   <%= f.submit "Add" %>
 <% end -%>
@@ -34,9 +34,6 @@ $('#list-items').sortable(
 	            type: 'post',
 	            data: $('#list-items').sortable('serialize') + '&id=<%=@list.id-%>',
 	            dataType: 'script',
-	            complete: function(request) {
-	                $('#list-items').effect('highlight');
-	            },
 	            url: '/lists/prioritize_items'
 	        })
 	    }

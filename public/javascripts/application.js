@@ -60,4 +60,5 @@ $(document).ready(function() {
 	$(".item-view").each(function(i){
 		$(this).editInPlace();
 	});
+	$(".focus").focus();
 });

@@ -1,7 +1,7 @@
 <h3>Create a new list</h3>
 <% form_for :list do |f|%>
   <%= render :partial => "shared/errors", :object => @list.errors %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title, :class => "focus" %>
   <%= f.submit "Go" %>
 <% end %>
 
