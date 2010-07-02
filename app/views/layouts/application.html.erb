@@ -16,8 +16,8 @@
   <meta name="description" content="LISTS!" />
 
   <%= javascript_include_tag "jquery", "application" %>
-
-  	<%= yield(:head) %>
+  <%= "<script>var AUTH_TOKEN =  #{form_authenticity_token.inspect};</script>" if protect_against_forgery? %>
+  <%= yield(:head) %>
 
 </head>
 <body>

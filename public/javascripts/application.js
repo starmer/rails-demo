@@ -33,7 +33,7 @@ jQuery.fn.editInPlace = function() {
 		edit.hide();
 		return false;
 	});
-	view.click(function() {
+	view.dblclick(function() {
 		edit.show();
 		view.hide();	
     	return false;

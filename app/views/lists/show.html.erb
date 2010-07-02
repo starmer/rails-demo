@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= javascript_include_tag "jquery-ui-1.8.2.custom.min.js" %>
+<% end %>
+
 <h3 id="page-title"><%= @list.title %></h3>
 <%= render :partial => "shared/errors", :object => @item.errors %>
 
@@ -9,11 +13,32 @@
 
 <ul id="list-items">
 <% for item in @list.items %>
-  <li class="item-view" id="<%=item.id%>-view">
-    <%= render :partial => "items/item", :locals => { :item => item } %>
-  </li>
-  <li class="item-edit" id="<%=item.id%>-edit" style="display:none;">
-    <%= render :partial => "items/form", :locals => { :item => item } %>
+  <li id="item_<%= item.id -%>">
+    <%= render :partial => "items/item_and_form", :locals => { :item => item } %>
   </li>
 <% end %>
 </ul>
+
+<script>
+
+$('#list-items').sortable(
+	{
+	    axis: 'y',
+	    dropOnEmpty: false,
+	    cursor: 'hand',
+	    items: 'li',
+	    opacity: 0.4,
+	    scroll: true,
+	    update: function() {
+	        $.ajax({
+	            type: 'post',
+	            data: $('#list-items').sortable('serialize') + '&id=<%=@list.id-%>',
+	            dataType: 'script',
+	            complete: function(request) {
+	                $('#list-items').effect('highlight');
+	            },
+	            url: '/lists/prioritize_items'
+	        })
+	    }
+	});
+</script>

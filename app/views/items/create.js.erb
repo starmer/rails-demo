@@ -6,8 +6,7 @@
 <% else %>
 
 	$("#item-form").before('<div class="notice flash"><%= escape_javascript(flash.delete(:notice)) %></div>');
-	$("#list-items").append('<li class="item-view" id="<%=@item.id%>-view"><%= escape_javascript(render(:partial => @item)) %></li>');
-	$("#list-items").append('<li class="item-edit" id="<%=@item.id%>-edit" style="display:none"><%= escape_javascript(render(:partial => "items/form", :locals => {:item => @item})) %></li>');
+	$("#list-items").append('<li id="item_<%= @item.id -%>"><%= escape_javascript(render(:partial => "items/item_and_form", :locals => {:item => @item})) %></li>');
 	$("#item-form")[0].reset();
 	$("#<%=@item.id%>-view").editInPlace();
 	$(".edit_item").submitWithAjax();

@@ -1,0 +1,6 @@
+<div class="item-view" id="<%=item.id%>-view">
+  <%= render :partial => "items/item", :locals => { :item => item } %>
+</div>
+<div class="item-edit" id="<%=item.id%>-edit" style="display:none;">
+  <%= render :partial => "items/form", :locals => { :item => item } %>
+</div>

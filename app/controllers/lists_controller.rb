@@ -5,6 +5,16 @@ class ListsController < ApplicationController
       @list = List.new
     end
     
+    def prioritize_items
+      list = List.find(params[:id])
+      items = list.items
+      items.each do |item|
+        item.position = params['item'].index(item.id.to_s) + 1
+        item.save
+      end
+      render :nothing => true
+    end
+    
     def show
       
       if(params[:token])
