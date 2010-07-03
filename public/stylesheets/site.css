@@ -91,21 +91,26 @@ h1,h2,h3,h4,h5{
 	padding-top:5px;
 }
 
-#list-items{
+.list-items{
 	margin:10px 0;
 	width:500px;
 }
 
-#list-items li{
+.list-items li{
 	border-bottom:1px dotted gray;
 	background-color:#F0F0F0;
 	padding:0;
 }
 
-#list-items li div{
+.list-items li div{
 	padding:5px;
 }
 
-#list-items .edit{
+.list-items .edit{
 	background-color:#FFFFCC;
+}
+
+.archive_checkbox_form{
+	float:left;
+	margin-right:5px;
 }

@@ -5,10 +5,21 @@
 	
 <% else %>
 
-	$("#item-form").before('<div class="notice flash"><%= escape_javascript(flash.delete(:notice)) %></div>');
-	$("#<%=@item.id%>-view").html("<%=@item.title%>");
-	$("#<%=@item.id%>-view").show();
-	$("#<%=@item.id%>-edit").hide();
+	//$("#item-form").before('<div class="notice flash"><%= escape_javascript(flash.delete(:notice)) %></div>');
+	$("#lists").remove();
+	$("#item-form").after('<%= escape_javascript(render(:partial => "lists/list", :locals => {:list => @list})) %>');
+	$("#item-form")[0].reset();
+
+	/* live query? */
+	$(".edit_item").submitWithAjax();
+	$(".item-view").each(function(i){
+		$(this).editInPlace();
+	});
+
+	$(".archive_checkbox_form").submitWithAjax();
+	$(".archive_item_checkbox").each(function(){
+		$(this).archive();
+	});
 
 
 <% end %>

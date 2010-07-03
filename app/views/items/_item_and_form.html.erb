@@ -1,4 +1,7 @@
 <div class="item-view" id="<%=item.id%>-view">
+  <% form_for item, :html => {:id => "archive_item_#{item.id}", :class => "archive_checkbox_form"} do |f| -%>
+    <%= f.check_box :archived, {:class=>"archive_item_checkbox"} %>
+  <% end -%>
   <%= render :partial => "items/item", :locals => { :item => item } %>
 </div>
 <div class="item-edit" id="<%=item.id%>-edit" style="display:none;">

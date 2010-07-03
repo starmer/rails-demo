@@ -54,11 +54,33 @@ jQuery.fn.editInPlace = function() {
   return this;
 };
 
+jQuery.fn.archive = function() {
+	var form = this.closest("form");
+	var item_id = /[0-9]+/(form.attr("id"));
+	
+	this.click(function(){
+		form.submit();
+		
+		
+		
+		return false;
+	});
+};
+
 $(document).ready(function() {
+	
 	$("#item-form").submitWithAjax();
+	
+	/* live query? */
 	$(".edit_item").submitWithAjax();
 	$(".item-view").each(function(i){
 		$(this).editInPlace();
 	});
+	
+	$(".archive_checkbox_form").submitWithAjax();
+	$(".archive_item_checkbox").each(function(){
+		$(this).archive();
+	});
+	
 	$(".focus").focus();
 });

@@ -9,8 +9,11 @@ class ListsController < ApplicationController
       list = List.find(params[:id])
       items = list.items
       items.each do |item|
-        item.position = params['item'].index(item.id.to_s) + 1
-        item.save
+        pos = params['item'].index(item.id.to_s)
+        if not pos.nil?
+          item.position = pos + 1
+          item.save
+        end
       end
       render :nothing => true
     end

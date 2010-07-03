@@ -10,32 +10,4 @@
   <%= f.hidden_field :list_id, :value => @list.id %>
   <%= f.submit "Add" %>
 <% end -%>
-
-<ul id="list-items">
-<% for item in @list.items %>
-  <li id="item_<%= item.id -%>">
-    <%= render :partial => "items/item_and_form", :locals => { :item => item } %>
-  </li>
-<% end %>
-</ul>
-
-<script>
-
-$('#list-items').sortable(
-	{
-	    axis: 'y',
-	    dropOnEmpty: false,
-	    cursor: 'hand',
-	    items: 'li',
-	    opacity: 0.4,
-	    scroll: true,
-	    update: function() {
-	        $.ajax({
-	            type: 'post',
-	            data: $('#list-items').sortable('serialize') + '&id=<%=@list.id-%>',
-	            dataType: 'script',
-	            url: '/lists/prioritize_items'
-	        })
-	    }
-	});
-</script>
+<%= render :partial => "list", :locals => { :list => @list } %>
