@@ -1,14 +1,8 @@
 class ListsController < ApplicationController
 
     def index
-      @lists = List.find(:all)
+      @lists = List.find_all_by_cookie(get_cookie)
       @list = List.new
-      
-      #if the user isn't logged in then create a cookie to associate with the list
-      if cookies[:list_creator].nil?
-        cookies[:lists_creator] = "c is for cookies"
-      end
-      
     end
     
     def prioritize_items
@@ -46,6 +40,7 @@ class ListsController < ApplicationController
       
       @list.link_token = Token.create.token
       @list.edit_token = Token.create.token
+      @list.cookie = get_cookie
       
       respond_to do |format|
         if @list.save
@@ -57,5 +52,15 @@ class ListsController < ApplicationController
           format.xml  { render :xml => @list.errors, :status => :unprocessable_entity }
         end
       end
+    end
+    
+    def get_cookie
+      if cookies[:lists].nil?
+        cookies[:lists] = {
+          :value => Token.create(64).token,
+          :expires => 10.years.from_now,
+        }
+      end
+      cookies[:lists].to_s
     end
 end

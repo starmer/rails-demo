@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100701121217) do
+ActiveRecord::Schema.define(:version => 20100704143806) do
 
   create_table "items", :force => true do |t|
     t.string   "title"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20100701121217) do
     t.string   "edit_token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cookie"
   end
 
   create_table "tokens", :force => true do |t|
