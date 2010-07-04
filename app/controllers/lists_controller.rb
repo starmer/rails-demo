@@ -3,6 +3,12 @@ class ListsController < ApplicationController
     def index
       @lists = List.find(:all)
       @list = List.new
+      
+      #if the user isn't logged in then create a cookie to associate with the list
+      if cookies[:list_creator].nil?
+        cookies[:lists_creator] = "c is for cookies"
+      end
+      
     end
     
     def prioritize_items

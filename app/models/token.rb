@@ -1,22 +1,21 @@
 class Token < ActiveRecord::Base
   validates_uniqueness_of :token
   
-  TOKEN_LENGTH = 4
+  DEFAULT_LENGTH = 4
+  DEFAULT_CHARACTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890'
   
-  def self.create
-    token = Token.create_token
+  def self.create(length = DEFAULT_LENGTH, characters = DEFAULT_CHARACTERS)
+    token = Token.create_token(length, characters)
     super(:token => token)
   end
   
-  def self.create_token
-    characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890'
+  def self.create_token(length, characters)
     token = ''
     srand
-    TOKEN_LENGTH.times do
+    length.times do
       pos = rand(characters.length)
       token += characters[pos..pos]
     end
-    puts token
     token
   end
 end
