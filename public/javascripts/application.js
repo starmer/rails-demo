@@ -60,16 +60,27 @@ jQuery.fn.archive = function() {
 	
 	this.click(function(){
 		form.submit();
-		
-		
-		
 		return false;
 	});
 };
 
+function setupListEditInPlace(){
+	$("#list-cancel").click(function(){
+		$("#list-view").show();
+		$("#list-edit").hide();
+		return false;
+	});
+	$("#list-view").dblclick(function() {
+		$("#list-edit").show();
+		$("#list-view").hide();	
+    	return false;
+	});
+}
+
 $(document).ready(function() {
 	
 	$("#item-form").submitWithAjax();
+	$("#list-form").submitWithAjax();
 	
 	/* live query? */
 	$(".edit_item").submitWithAjax();
@@ -83,4 +94,6 @@ $(document).ready(function() {
 	});
 	
 	$(".focus").focus();
+	
+	setupListEditInPlace();
 });

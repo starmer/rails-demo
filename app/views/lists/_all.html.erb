@@ -1,0 +1,6 @@
+<div id="list-view">
+  <%= list.title %>
+</div>
+<div id="list-edit" style="display:none;">
+  <%= render :partial => "lists/form", :locals => { :list => list } %>
+</div>

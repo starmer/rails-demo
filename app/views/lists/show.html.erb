@@ -2,7 +2,11 @@
   <%= javascript_include_tag "jquery-ui-1.8.2.custom.min.js" %>
 <% end %>
 
-<h3 id="page-title"><%= @list.title %></h3>
+<h3 id="page-title">
+  <%= render :partial => "lists/all", :locals => {:list => @list} %>
+</h3>
+
+
 <%= render :partial => "shared/errors", :object => @item.errors %>
 
 <% form_for @item, :html => {:id => 'item-form'} do |f| -%>

@@ -54,6 +54,34 @@ class ListsController < ApplicationController
       end
     end
     
+    def delete
+      @list = List.find(params[:id])
+      @list.destroy
+      flash[:notice] = 'List was successfully deleted'
+
+      respond_to do |format|
+        format.html { redirect_to :lists }
+        format.xml  { head :ok }
+        format.js
+      end
+    end
+    
+    def update
+      @list = List.find(params[:id])
+
+      respond_to do |format|
+        if @list.update_attributes(params[:list])
+          format.html { render :template => "lists/show"  }
+          format.xml  { head :ok }
+          format.js
+        else
+          format.html { render :template => "lists/show" }
+          format.xml  { render :xml => @item.errors, :status => :unprocessable_entity }
+          format.js
+        end
+      end
+    end
+    
     def get_cookie
       if cookies[:lists].nil?
         cookies[:lists] = {
